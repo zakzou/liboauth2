@@ -8,10 +8,10 @@ from setuptools import setup, find_packages
 setup(
         name = 'liboauth2',
         version = '0.0.1',
-        keywords = ('login', 'OAuth2'),
+        keywords = ('OAuth2 Client', 'OAuth2'),
         description = 'Light Python wrapper for the OAuth 2.0 protocol',
         long_description = 'See http://github.com/zakzou/liboauth2',
-        license = 'GNU LGPL',
+        license = 'MIT',
 
         url = 'http://github.com/zakzou/liboauth2',
         author = 'zakzou',

@@ -1,3 +1,6 @@
+liboauth2
+=========
+
 Light Python wrapper for the OAuth 2.0
 
 
