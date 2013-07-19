@@ -137,7 +137,7 @@ def callback():
             'oauth_consumer_key': CLIENT_ID,
             'openid': data['openid'],
             'clientip': request.remote_addr,
-            'oauth_version': '21',
+            'oauth_version': '2.a',
             }
     resp = client.fetch('http://open.t.qq.com/api/user/info', params)
     return str(resp['result'])
