@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
         name = 'liboauth2',
-        version = '0.0.1',
+        version = '0.0.2',
         keywords = ('OAuth2 Client', 'OAuth2'),
         description = 'Light Python wrapper for the OAuth 2.0 protocol',
         long_description = 'See http://github.com/zakzou/liboauth2',
