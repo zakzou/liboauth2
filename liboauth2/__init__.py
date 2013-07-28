@@ -95,7 +95,7 @@ class Client(object):
             parameters['client_secret'] = self.client_secret
         elif self.client_auth == AUTH_TYPE_AUTHORIZATION_BASIC:
             parameters['client_id'] = self.client_id
-            auth_str = 'Base %s' % b64encode('%s:%s' % (self.client_id, self.client_secret))
+            auth_str = 'Basic %s' % b64encode('%s:%s' % (self.client_id, self.client_secret))
             http_headers['Authorization'] = auth_str
         else:
             raise base.ArgumentError('Unknow client auth type.')
