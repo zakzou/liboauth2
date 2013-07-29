@@ -17,7 +17,7 @@ from base64 import b64encode
 from urllib import urlencode
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.3'
 
 
 # Different AUTH method
@@ -162,6 +162,7 @@ class Client(object):
                 pycurl.CUSTOMREQUEST    : http_method,
                 }
 
+        param_str = ''
         if isinstance(parameters, dict):
             param_str = urlencode(parameters)
 
@@ -172,8 +173,6 @@ class Client(object):
                 curl_options[pycurl.POSTFIELDS] = param_str
             else:
                 curl_options[pycurl.POSTFIELDS] = parameters
-        elif http_method in (HTTP_METHOD_PUT, HTTP_METHOD_PATCH):
-            curl_options[pycurl.POSTFIELDS] = param_str
         elif http_method == HTTP_METHOD_HEAD:
             curl_options[pycurl.NOBODY] = True
         elif http_method in (HTTP_METHOD_DELETE, HTTP_METHOD_GET):
