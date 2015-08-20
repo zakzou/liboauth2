@@ -17,7 +17,7 @@ from base64 import b64encode
 from urllib import urlencode
 
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 
 # Different AUTH method
@@ -76,9 +76,11 @@ class Client(object):
         self.access_token = None
         self.access_token_param_name = 'access_token'
         self.curl_options = {}
+        self.key_map = dict(client_id='client_id', client_secret='client_secret')
 
     def get_auth_url(self, auth_edupoint, redirect_uri, **extra_parameters):
-        parameters = dict(response_type='code', client_id=self.client_id, redirect_uri=redirect_uri)
+        parameters = dict(response_type='code', redirect_uri=redirect_uri)
+        parameters[self.key_map['client_id']] = self.client_id
         parameters.update(extra_parameters)
         return '%s?%s' % (auth_edupoint, urlencode(parameters))
 
@@ -91,10 +93,10 @@ class Client(object):
         parameters['grant_type'] = cls.GRANT_TYPE
         http_headers = {}
         if self.client_auth in (AUTH_TYPE_URI, AUTH_TYPE_FORM):
-            parameters['client_id'] = self.client_id
-            parameters['client_secret'] = self.client_secret
+            parameters[self.key_map['client_id']] = self.client_id
+            parameters[self.key_map['client_secret']] = self.client_secret
         elif self.client_auth == AUTH_TYPE_AUTHORIZATION_BASIC:
-            parameters['client_id'] = self.client_id
+            parameters[self.key_map['client_id']] = self.client_id
             auth_str = 'Basic %s' % b64encode('%s:%s' % (self.client_id, self.client_secret))
             http_headers['Authorization'] = auth_str
         else:
